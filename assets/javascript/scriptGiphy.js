@@ -19,7 +19,7 @@ function displayButtons() {
     $("#themeBtns").empty();
 
     for (var i = 0; i < themeArray.length; i++) {
-        var themeBtns = $("<button>");
+        var themeBtns = $('<button>');
         themeBtns.attr("data-name", themeArray[i]);
         themeBtns.addClass("themeBtns");
         themeBtns.text(themeArray[i]);
@@ -39,6 +39,36 @@ $(document).on("click", ".themeBtns", function() {
 
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + userClick + "&api_key=" + authKey + "&limit=10";
 
+    $.ajax({
+        url: queryURL,
+        method: 'GET'
+    })
+     .done(function(response) {
+        console.log(response);
+
+        var results = response.data;
+
+        // Get rid of whats there to add new stuff
+        $("#gifResults").empty();
+
+        // Used var j because it is good practice
+        for (var j = 0; j < results.length; j++) {
+            var gifDiv = $('<div>');
+            var gifImgA = results[j].images.fixed_height.url;
+            var gifImgS = results[j].images.fixed_height_still.url;
+
+            var gifImg = $('<img>');
+                gifImg.atrr("src", gifImgS);
+                gifImg.attr('data-animate', gifImgA);
+                gifImg.attr('data-still', gifImgS);
+                gifImg.attr('data-state', 'still');
+
+        $("#gifResults").prepend(gifImg);
+        gifImg.click(animate);
+
+
+        };
+     });
 });
 
 // ==================== HTML ===============================================================
