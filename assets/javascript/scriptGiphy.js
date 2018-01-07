@@ -5,13 +5,11 @@ $(document).ready(function() {
 
 // Giphy
 var authKey = "in1rFgH6d3WCWcNBv1w2yNuXb8nxnNXF";
-var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + + "&api_key=" + authKey + "&limit=10";
 
 // Theme string
 var themeArray = ['cheese curds', 'nachos', 'tater tots', 'onion rings', 'french fries', 'chicken wings', 'egg rolls', 'bread sticks', 'soup', 'salsa', 'frog legs', 'woton', 'salad', 'oysters', 'chicken strips', 'baked potato', 'popcorn'];
 
-// Button to hold input info
-var userSubmit = "";
+
 
 // ==================== Functions and processes ============================================
 
@@ -32,6 +30,16 @@ function displayButtons() {
 
     displayButtons();
 
+// On click functions
+$(document).on("click", ".themeBtns", function() {
+
+    // What theme button user clicks
+    var userClick = $(this).html();
+    console.log(userClick);
+
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + userClick + "&api_key=" + authKey + "&limit=10";
+
+});
 
 // ==================== HTML ===============================================================
 
