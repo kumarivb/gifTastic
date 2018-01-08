@@ -16,22 +16,25 @@ var themeArray = ['cheese curds', 'nachos', 'tater tots', 'onion rings', 'french
 // Buttons
 function displayButtons() {
     // So the buttons don't duplicate
-    $("#themeBtns").empty();
+    $('#themeBtns').empty();
 
     for (var i = 0; i < themeArray.length; i++) {
         var themeBtns = $('<button>');
-        themeBtns.attr("data-name", themeArray[i]);
-        themeBtns.addClass("themeBtns");
-        themeBtns.text(themeArray[i]);
+            themeBtns.attr('data-name', themeArray[i]);
+            themeBtns.addClass('themeBtns');
+            themeBtns.text(themeArray[i]);
 
-        $("#themeBtns").append(themeBtns);
+        $('#themeBtns').append(themeBtns);
     };
 };
 
     displayButtons();
 
 // On click functions
-$(document).on("click", ".themeBtns", function() {
+$(document).on('click', '.themeBtns', function() {
+
+    // Get rid of whats there to add new stuff
+    $('#gifResults').empty();
 
     // What theme button user clicks
     var userClick = $(this).html();
@@ -39,56 +42,64 @@ $(document).on("click", ".themeBtns", function() {
 
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + userClick + "&api_key=" + authKey + "&limit=10";
 
+    // API call
     $.ajax({
         url: queryURL,
         method: 'GET'
     })
-     .done(function(response) {
-        console.log(response);
 
+    .done(function(response) {
         var results = response.data;
-
-        // Get rid of whats there to add new stuff
-        $("#gifResults").empty();
 
         // Used var j because it is good practice
         for (var j = 0; j < results.length; j++) {
-            var gifDiv = $('<div>');
+            var gifDiv = $('<div class="gifSearchResults">');
+                gifDiv.append(showRating);
+                gifDiv.append(gifImg);
+
             var gifImgA = results[j].images.fixed_height.url;
             var gifImgS = results[j].images.fixed_height_still.url;
 
             var gifImg = $('<img>');
-                gifImg.atrr("src", gifImgS);
-                gifImg.attr('data-animate', gifImgA);
+                gifImg.attr('src', gifImgS);
                 gifImg.attr('data-still', gifImgS);
+                gifImg.attr('data-animated', gifImgA);
                 gifImg.attr('data-state', 'still');
+                gifImg.addClass('gifImages');
 
-        $("#gifResults").prepend(gifImg);
-        gifImg.click(animate);
+            var rating = results[j].rating;
+            var showRating = $('<p>').text("Rated: " + rating);
 
+        $('#gifResults').append(gifDiv);
 
         };
      });
+
+$(document).on('click', '.gifImages', function() {
+    var state = $(this).attr('data-state');
+
+    if (state == 'still') {
+        $(this).attr('src', $(this).data('animated'));
+        $(this).attr('data-state', 'animated');
+    }
+
+    else {
+        $(this).attr('src', $(this).data('still'));
+        $(this).attr('data-state', 'still');
+    }
 });
 
-// ==================== HTML ===============================================================
+});
 
+// Add user's input
+$(document).on('click', '#submitBtn', function() {
+        var userSearch = $('#userInput').val().trim();
+        themeArray.push(userSearch);
 
+        displayButtons();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Don't reload page
+        return false;
+});
 
 });
