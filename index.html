@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" src="assets/css/reset.css"></link>
-    <link rel="stylesheet" type="text/css" src="assets/css/style.css"></link>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <!-- link to jQuery JS -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <title>Gif Tastic</title>
@@ -13,23 +14,23 @@
 <body>
 
     <div id="mainContainer">
-        <span class="mainHead">Appetizers</span>
+        <div class="mainHead">Appetizers</div>
 
-        <span class="buttonContainer">
-            <div id="themeBtns"></div>
-        </span>
+        <div class="buttonContainer">
+            <span id="themeBtns"></span>
+        </div>
 
-        <span class="formContainer">
+        <div class="formContainer">
             <form>
-                <label>Add an appetizer</label>
-                <input type="text" id="userInput" placeholder="Yummy">
+                <label>Add an appetizer</label> <br />
+                <input type="text" id="userInput" placeholder="Yummy"> <br />
                 <input type="submit" id="submitBtn" value="submit">
             </form>
-        </span>
+        </div>
 
-        <span class="gifContainer">
-            <div id="gifResults"></div>
-        </span>
+        <div class="gifContainer">
+            <span id="gifResults"></span>
+        </div>
     </div>
 
 <!-- link to scriptGiphy.js in javascript folder -->
