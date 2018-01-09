@@ -1,11 +1,14 @@
 body {
     max-width: 100%;
     font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    background-image: url(../images/appetizer.png);
+    background-repeat: no-repeat;
 }
 
 label {
     line-height: 30px;
 }
+
 input {
     text-align: center;
 }
@@ -14,38 +17,51 @@ input {
     margin: auto;
     width: 90%;
     margin-top: 20px;
-    background-color: yellow;
 }
 
 #submitBtn {
     margin: 10px 0px 5px 0px;
+    border: 1px solid #d4c1b0;
 }
 
 .mainHead {
     margin: auto;
     width: 80%;
     text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
     padding: 30px 0px 30px 0px;
-    background-color: blue;
 }
 
 .buttonContainer {
     margin: auto;
-    width: 80%;
-
+    width: 50%;
+    text-align: center;
 }
 
 .themeBtns {
-    margin: 5px 2px 5px 2px;
+    margin: 0px 2px 5px 2px;
     padding:  10px 15px 10px 15px;
+    background-color: #d4c1b0;
 }
 
 .formContainer {
     margin: auto;
     text-align: center;
     padding: 10px 0px 10px 0px;
-    background-color: red;
 }
+
 .gifContainer {
-    background-color: green;
+    text-align: center;
+    width: 65%;
+    margin-left: 350px;
+}
+
+.gifImages {
+    border: 4px solid #d4c1b0;
+    margin: 0px 5px 5px 5px;
+}
+
+.gifSearchResults {
+    float: left;
 }

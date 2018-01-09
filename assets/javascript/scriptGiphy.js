@@ -7,9 +7,7 @@ $(document).ready(function() {
 var authKey = "in1rFgH6d3WCWcNBv1w2yNuXb8nxnNXF";
 
 // Theme string
-var themeArray = ['cheese curds', 'nachos', 'tater tots', 'onion rings', 'french fries', 'chicken wings', 'egg rolls', 'bread sticks', 'soup', 'salsa', 'frog legs', 'woton', 'salad', 'oysters', 'chicken strips', 'baked potato', 'popcorn'];
-
-
+var themeArray = ['cheese curds', 'nachos', 'tater tots', 'onion rings', 'french fries', 'chicken wings', 'egg rolls', 'bread sticks', 'soup', 'salsa', 'frog legs', 'salad', 'oysters', 'chicken strips', 'baked potato', 'popcorn'];
 
 // ==================== Functions and processes ============================================
 
@@ -54,7 +52,7 @@ $(document).on('click', '.themeBtns', function() {
         // Used var j because it is good practice
         for (var j = 0; j < results.length; j++) {
             var gifDiv = $('<div class="gifSearchResults">');
-                gifDiv.append(showRating);
+                gifDiv.prepend(showRating);
                 gifDiv.append(gifImg);
 
             var gifImgA = results[j].images.fixed_height.url;
@@ -75,6 +73,7 @@ $(document).on('click', '.themeBtns', function() {
         };
      });
 
+// making gifs either animated or still on click
 $(document).on('click', '.gifImages', function() {
     var state = $(this).attr('data-state');
 
@@ -97,6 +96,8 @@ $(document).on('click', '#submitBtn', function() {
         themeArray.push(userSearch);
 
         displayButtons();
+
+        $('#userInput').text("");
 
         // Don't reload page
         return false;
