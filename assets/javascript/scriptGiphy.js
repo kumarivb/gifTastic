@@ -38,7 +38,7 @@ $(document).on('click', '.themeBtns', function() {
     var userClick = $(this).html();
     console.log(userClick);
 
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + userClick + "&api_key=" + authKey + "&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + userClick + "&api_key=" + authKey + "&limit=10";
 
     // API call
     $.ajax({
