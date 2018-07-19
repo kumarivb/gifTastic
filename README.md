@@ -4,7 +4,8 @@
 A Giphy API app.
 
 ### New Skills
-* Call the Giphy API
+* Call the Giphy API and parameters
+* API key
 
 ### Technologies
 * Ajax
@@ -14,6 +15,6 @@ A Giphy API app.
 * HTML
 
 ### Challenges
-Calling the API and making gifs animated or still.
+Calling the API correctly and making gifs animated or still.
 
 https://kumarivb.github.io/gifTastic/
